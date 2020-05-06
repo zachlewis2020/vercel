@@ -55,6 +55,8 @@ const LAUNCHER_FILENAME = '___now_launcher';
 const BRIDGE_FILENAME = '___now_bridge';
 const HELPERS_FILENAME = '___now_helpers';
 const SOURCEMAP_SUPPORT_FILENAME = '__sourcemap_support';
+const preparedFiles: Files = {};
+let tsCompile: Register;
 
 async function downloadInstallAndBundle({
   files,
@@ -143,9 +145,6 @@ async function compile(
       [...inputFiles].map(p => relative(workPath, p)).join(', ')
   );
 
-  const preparedFiles: Files = {};
-
-  let tsCompile: Register;
   function compileTypeScript(path: string, source: string): string {
     const relPath = relative(workPath, path);
     if (!tsCompile) {
