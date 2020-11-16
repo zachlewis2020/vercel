@@ -3,6 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@redwoodjs/api": "0.15.0"
-  }
+    "@redwoodjs/api": "0.15.0",
+    "snyk": "^1.427.0"
+  },
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
