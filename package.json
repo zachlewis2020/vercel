@@ -12,7 +12,8 @@
     ]
   },
   "dependencies": {
-    "lerna": "3.16.4"
+    "lerna": "3.16.4",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "2.0.0",
@@ -44,7 +45,9 @@
     "test-integration-cli": "node utils/run.js test-integration-cli",
     "test-integration-once": "node utils/run.js test-integration-once",
     "test-integration-dev": "node utils/run.js test-integration-dev",
-    "lint": "eslint . --ext .ts,.js"
+    "lint": "eslint . --ext .ts,.js",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "lint-staged": {
     "./{*,{api,packages,test,utils}/**/*}.{js,ts}": [
@@ -144,5 +147,6 @@
         }
       }
     ]
-  }
+  },
+  "snyk": true
 }
